@@ -51,7 +51,14 @@
     max-width: 390px;
     text-align: center;
   }
-
+  .screen-background {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
   h1 {
     margin: 0 0 20px;
 
@@ -243,7 +250,7 @@
 </head>
 
 <body>
-
+<div id="screenBackground"></div>
 <div class="container">
 
 <h1 id="pageTitle">🎁 PayPayを送る</h1>
@@ -780,7 +787,23 @@ copyButton.onclick =
 
   }
 );
+const screenBackground =
+  document.getElementById("screenBackground");
 
+const backgroundImage =
+  document.createElement("img");
+
+backgroundImage.className =
+  "screen-background";
+
+backgroundImage.src =
+  giftId
+    ? "uketo_right_screen.png"
+    : "uketo_left_screen.png";
+
+screenBackground.appendChild(
+  backgroundImage
+);
 </script>
 
 </body>
