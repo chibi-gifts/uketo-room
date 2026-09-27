@@ -362,7 +362,7 @@ signInAnonymously(auth)
 
 if (giftId) {
 
-  document.documentElement.classList.remove("gift-loading");
+
 recipientName.style.display =
   "none";
   document.getElementById("recipientStepTitle").style.display =
@@ -435,7 +435,7 @@ recipientName.style.display =
     description.textContent =
       data.name + "さんへのPayPayです♡";
   }
-
+document.documentElement.classList.remove("gift-loading");
   button.disabled =
     false;
 
