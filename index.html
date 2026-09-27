@@ -197,7 +197,39 @@
     box-shadow:
       0 4px 12px rgba(220, 150, 180, 0.12);
   }
+.copy-button {
+  width: 100%;
+  height: 56px;
 
+  margin-top: 12px;
+
+  border: none;
+  border-radius: 18px;
+
+  background: linear-gradient(
+    135deg,
+    #f29fc0,
+    #e98bae
+  );
+
+  color: #ffffff;
+
+  font-size: 17px;
+  font-weight: 700;
+
+  box-shadow:
+    0 5px 12px rgba(220, 145, 175, 0.18);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.15s,
+    box-shadow 0.2s;
+}
+
+.copy-button:active {
+  transform: scale(0.97);
+}
   @media (min-width: 600px) {
     body {
       padding: 40px;
