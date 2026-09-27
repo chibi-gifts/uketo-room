@@ -426,14 +426,22 @@ recipientName.style.display =
       button.style.display =
         "none";
 
-    } else {
+} else {
 
-      button.disabled =
-        false;
+  const data =
+    snapshot.val();
 
-      button.classList.add("active");
+  if (data.name) {
+    description.textContent =
+      data.name + "さんへのPayPayです♡";
+  }
 
-    }
+  button.disabled =
+    false;
+
+  button.classList.add("active");
+
+}
 
   } catch (error) {
 
