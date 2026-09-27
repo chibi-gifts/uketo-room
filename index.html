@@ -255,7 +255,10 @@
     }
   }
 /* 背景画像に合わせて元の固定デザインを隠す */
-#pageTitle,
+#linkPart {
+  transform: translateY(180px);
+}
+   #pageTitle,
 #description,
 #stepTitle,
 .paste-help,
@@ -263,10 +266,7 @@
 .bottom-message {
   visibility: hidden;
 }
-#linkPart {
-  position: relative;
-top: 100px;
-}
+
  </style>
 </head>
 
