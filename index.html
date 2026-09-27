@@ -238,7 +238,17 @@ placeholder="PayPayリンクを貼り付け"
 <div class="paste-help">
   PayPayの送るリンクをそのまま貼り付けてね♡
 </div>
+<div class="step-title">
+  💕 受け取る人のお名前♡
+</div>
 
+<input
+  type="text"
+  id="recipientName"
+  class="input-area"
+  placeholder="お名前を入力してね"
+  autocomplete="off"
+>
 <button
   id="receiveButton"
   class="receive-button"
@@ -298,7 +308,8 @@ const db = getDatabase(app);
 
 const input =
   document.getElementById("linkPart");
-
+const recipientName =
+  document.getElementById("recipientName");
 const button =
   document.getElementById("receiveButton");
 
@@ -476,7 +487,10 @@ if (!giftId) {
         "none";
 
 
-      if (value.length > 0) {
+    if (
+  value.length > 0 &&
+  recipientName.value.trim().length > 0
+) {
 
         button.disabled =
           false;
@@ -494,7 +508,37 @@ if (!giftId) {
 
     }
   );
+recipientName.addEventListener(
+  "input",
+  function() {
 
+    const value =
+      input.value.trim();
+
+    const name =
+      recipientName.value.trim();
+
+    if (
+      value.length > 0 &&
+      name.length > 0
+    ) {
+
+      button.disabled =
+        false;
+
+      button.classList.add("active");
+
+    } else {
+
+      button.disabled =
+        true;
+
+      button.classList.remove("active");
+
+    }
+
+  }
+);
 }
 
 
@@ -537,7 +581,10 @@ button.addEventListener(
 
         const data =
           snapshot.val();
-
+if (data.name) {
+  description.textContent =
+    data.name + "さんへのPayPayです♡";
+}
 
         if (data.status !== "active") {
 
@@ -580,13 +627,16 @@ return;
        受け取りページを作る
        ========================= */
 
-    const value =
-      input.value.trim();
+   const value =
+  input.value.trim();
+
+const name =
+  recipientName.value.trim();
 
 
-    if (!value) {
-      return;
-    }
+if (!value || !name) {
+  return;
+}
 
 
     const baseUrl =
@@ -616,13 +666,15 @@ return;
 
       await set(linkRef, {
 
-        url: paypayUrl,
+  url: paypayUrl,
 
-        status: "active",
+  name: recipientName.value.trim(),
 
-        createdAt: Date.now()
+  status: "active",
 
-      });
+  createdAt: Date.now()
+
+});
 
 
       const giftUrl =
