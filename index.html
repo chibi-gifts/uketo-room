@@ -295,7 +295,13 @@ placeholder="PayPayリンクを貼り付け"
 >
   ✨ ちゃんと入力できました♡ ✨
 </div>
-
+<button
+  id="copyButton"
+  class="copy-button"
+  style="display: none;"
+>
+  💗 リンクをコピー
+</button>
 <div class="bottom-message" id="bottomMessage">
   これだけでOKです😊<br>
   <span class="heart">♡</span>
@@ -347,7 +353,8 @@ const button =
 
 const resultMessage =
   document.getElementById("resultMessage");
-
+const copyButton =
+  document.getElementById("copyButton");
 const pageTitle =
   document.getElementById("pageTitle");
 
@@ -727,14 +734,36 @@ if (!value || !name) {
         newGiftId;
 
 
-      resultMessage.textContent =
-        "🎁 受け取りページができました♡\n\n" +
-        giftUrl;
+resultMessage.textContent =
+  "🎁 受け取りページができました♡\n\n" +
+  giftUrl;
 
+resultMessage.style.display =
+  "block";
 
-      resultMessage.style.display =
-        "block";
+copyButton.style.display =
+  "block";
 
+copyButton.onclick =
+  async function() {
+
+    try {
+
+      await navigator.clipboard.writeText(giftUrl);
+
+      copyButton.textContent =
+        "💗 コピーしました♡";
+
+    } catch (error) {
+
+      console.error(error);
+
+      copyButton.textContent =
+        "コピーできませんでした💦";
+
+    }
+
+  };
 
     } catch (error) {
 
