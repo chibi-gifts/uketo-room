@@ -238,7 +238,7 @@ placeholder="PayPayリンクを貼り付け"
 <div class="paste-help">
   PayPayの送るリンクをそのまま貼り付けてね♡
 </div>
-<div class="step-title">
+<div class="step-title" id="recipientStepTitle">
   💕 受け取る人のお名前♡
 </div>
 
@@ -363,7 +363,10 @@ signInAnonymously(auth)
 if (giftId) {
 
   document.documentElement.classList.remove("gift-loading");
-
+recipientName.style.display =
+  "none";
+  document.getElementById("recipientStepTitle").style.display =
+  "none";
   pageTitle.textContent =
     "🎁 PayPayが届いてるよ♡";
 
