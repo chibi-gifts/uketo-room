@@ -336,17 +336,13 @@ const giftId =
    Firebase匿名ログイン
    ========================= */
 
-try {
-
-  await signInAnonymously(auth);
-
-  console.log("匿名ログイン成功");
-
-} catch (error) {
-
-  console.error("匿名ログイン失敗", error);
-
-}
+signInAnonymously(auth)
+  .then(() => {
+    console.log("匿名ログイン成功");
+  })
+  .catch((error) => {
+    console.error("匿名ログイン失敗", error);
+  });
 
 
 /* =========================
