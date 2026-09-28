@@ -256,9 +256,7 @@
   }
 /* 背景画像に合わせて元の固定デザインを隠す */
 #linkPart {
-  position: absolute;
-  left: 0;
-  width: 100%;
+  transform: translateY(0px);
 }
    #pageTitle,
 #description,
@@ -827,15 +825,7 @@ backgroundImage.src =
 screenBackground.appendChild(
   backgroundImage
 );
-const positionLinkInput = () => {
-  const nameTop = recipientName.offsetTop;
-  const linkHeight = input.offsetHeight;
 
-  input.style.top =
-    (nameTop - linkHeight - 10) + "px";
-};
-
-positionLinkInput();
 </script>
 
 </body>
