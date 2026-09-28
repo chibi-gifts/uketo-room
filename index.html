@@ -827,6 +827,15 @@ backgroundImage.src =
 screenBackground.appendChild(
   backgroundImage
 );
+const positionLinkInput = () => {
+  const nameTop = recipientName.offsetTop;
+  const linkHeight = input.offsetHeight;
+
+  input.style.top =
+    (nameTop - linkHeight - 10) + "px";
+};
+
+positionLinkInput();
 </script>
 
 </body>
