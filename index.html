@@ -294,7 +294,7 @@ top: 366px;
   visibility: hidden;
 }
 /* 受取画面のPayPayボタン位置 */
-html.gift-loading #receiveButton {
+body.gift-page #receiveButton {
   top: 350px;
 }
  </style>
@@ -532,6 +532,7 @@ recipientName.style.display =
       data.name + "さんへのPayPayです♡";
   }
 document.documentElement.classList.remove("gift-loading");
+document.body.classList.add("gift-page");
   button.disabled =
     false;
 
