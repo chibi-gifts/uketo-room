@@ -815,7 +815,9 @@ copyButton.onclick =
 
     try {
 
-      await navigator.clipboard.writeText(giftUrl);
+ await navigator.clipboard.writeText(
+  name + "さん🎁受け取りページができました♡ " + giftUrl
+);
 
       copyButton.textContent =
         "💗 コピーしました♡";
